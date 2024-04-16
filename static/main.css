@@ -1,0 +1,38 @@
+/* main.css */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    background-color: #343a40; /* A dark gray color, similar to Bootstrap's dark theme */
+}
+
+.navbar-brand {
+    color: #f8f9fa !important; /* Bootstrap's white color */
+    font-weight: bold;
+    margin-right: 2em; /* Give some space next to the brand */
+}
+
+.nav-link {
+    color: black !important; /* Bootstrap's white color */
+    margin-right: 1em; /* Space between nav items */
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: #dc3545 !important; /* Bootstrap's danger color for hover state */
+}
+
+.navbar-toggler {
+    border-color: #dc3545; /* Bootstrap's danger color */
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(220, 53, 69, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.container h1 {
+    color: #28a745; /* Bootstrap's success color */
+}
+
+/* Add any additional custom styles below */
