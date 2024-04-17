@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 from flask import Flask, render_template, request, redirect, url_for
-=======
-from flask import Flask, render_template, request
 from datetime import datetime
->>>>>>> 1e825e5dc208990ffaae86945ff1cb1ab47b26e7
+
 
 app = Flask(__name__)
 
@@ -11,34 +8,31 @@ app = Flask(__name__)
 quiz_questions = [
     {
         "question_id": 1,
-        "question_text": "Question 1 text",
-        "options": ["Option 1", "Option 2", "Option 3", "Option 4"],
-        "answer": "Option 1"
+        "question_text": "When is a player not considered offside?",
+        "options": ["When receiving the ball directly from a goal kick.", "When they are in their own half of the pitch.", "Receiving a throw in from while standing behind second-last defender.", "All of the above."],
+        "answer": "All of the above."
     },
     {
         "question_id": 2,
-        "question_text": "Question 2 text",
-        "options": ["Option 1", "Option 2", "Option 3", "Option 4"],
-        "answer": "Option 2"
+        "question_text": "A defender's attempted clearance mis-hits to a forward who was in an offside position at the time the ball was played. The forward then scores. Is the goal allowed?",
+        "options": ["Yes, because the ball came from an opponent.", "No, because the forward was in an offside position.", "Yes, but only if the referee determines the defender played the ball deliberately.", "No, unless the ball was played to the forward by a teammate."],
+        "answer": "Yes, but only if the referee determines the defender played the ball deliberately."
     },
     {
         "question_id": 3,
-        "question_text": "Question 3 text",
-        "options": ["Option 1", "Option 2", "Option 3", "Option 4"],
-        "answer": "Option 3"
+        "question_text": "The attacking goalie does a goal kick towards a player behind the second defender. The attacking player then scores",
+        "options": ["Offside Call", "No Offside Call"],
+        "answer": "No Offside Call"
     },
 ]
 
 # Home page with a Start button
 @app.route('/')
 def home():
-<<<<<<< HEAD
     return render_template('home.html')
-=======
     access_time = datetime.now()  # Capture the current time
     print(f"Basics home page accessed at {access_time}")
     return render_template('home.html')  # Assuming you have a home.html file with a Start button
->>>>>>> 1e825e5dc208990ffaae86945ff1cb1ab47b26e7
 
 # Learning page that takes a lesson number variable
 @app.route('/offside-explained')
