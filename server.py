@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 from flask import Flask, render_template, request, redirect, url_for
+=======
+from flask import Flask, render_template, request
+from datetime import datetime
+>>>>>>> 1e825e5dc208990ffaae86945ff1cb1ab47b26e7
 
 app = Flask(__name__)
 
@@ -27,12 +32,26 @@ quiz_questions = [
 # Home page with a Start button
 @app.route('/')
 def home():
+<<<<<<< HEAD
     return render_template('home.html')
+=======
+    access_time = datetime.now()  # Capture the current time
+    print(f"Basics home page accessed at {access_time}")
+    return render_template('home.html')  # Assuming you have a home.html file with a Start button
+>>>>>>> 1e825e5dc208990ffaae86945ff1cb1ab47b26e7
 
 # Learning page that takes a lesson number variable
-@app.route('/learn/<int:lesson_number>')
-def learn(lesson_number):
-    return render_template('lesson.html', lesson_number=lesson_number)  # Pass the lesson number to the template
+@app.route('/offside-explained')
+def offside_explained():
+    access_time = datetime.now()  # Capture the current time
+    print(f"Offsides explained page accessed at {access_time}")
+    return render_template('offside-explained.html')
+
+@app.route('/exceptions')
+def exceptions():
+    access_time = datetime.now()  # Capture the current time
+    print(f"Exceptions page accessed at {access_time}")
+    return render_template('exceptions.html')
 
 
 """
