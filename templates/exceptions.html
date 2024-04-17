@@ -1,0 +1,48 @@
+<!-- home.html -->
+{% extends 'navbar.html' %}
+
+{% block title %}Exceptions Explained{% endblock %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Soccer</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Exceptions Explained</h1>
+        <!-- Home page content here -->
+        <p>Welcome to the most in depth portion of learning on this platform. Learn about the exceptions of offsides in soccer!</p>
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="h5 mt-3">Offsides exceptions in action:</h2>
+                <div class="ratio ratio-16x9">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/U01-uArNpdw?start=101&end=153" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <h2 class="h5 mt-3">Not in play:</h2>
+                <h2 class="h5 mt-3">Before pass</h2>
+                <p class="text-muted small">Offside line is established before the pass is made</p>
+                <img src="../static/data/learning/before-pass.png" alt="before-pass" class="img-fluid" style="max-width: 300px; height: auto;">
+                <h2 class="h5 mt-3">After pass</h2>
+                <p class="text-muted small">Offside player removed themselves from interfering in the play, so the player who was not offside can legally play the ball</p>
+                <img src="../static/data/learning/after-pass.png" alt="after-pass" class="img-fluid" style="max-width: 300px; height: auto;">
+            </div>
+            <div class="col-md-6">
+                <h2 class="h5 mt-3">Half field:</h2>
+                <p class="text-muted small">A player cannot be offside in their side of the field.</p>
+                <img src="../static/data/learning/half-field-their-side.png" alt="half-field-their-side" class="img-fluid" style="max-width: 300px; height: auto;">
+                <p class="text-muted small">If the player is behind the ball (offside line), they cannot be offside</p>
+                <img src="../static/data/learning/half-field-their-side.png" alt="half-field-behind-ball" class="img-fluid" style="max-width: 300px; height: auto;">
+        </div>
+        <div class="row">
+            <a href="/quiz" class="btn btn-primary">Quiz</a>
+        </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}
