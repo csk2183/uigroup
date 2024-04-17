@@ -1,0 +1,23 @@
+<!-- quiz.html -->
+{% extends 'navbar.html' %}
+
+{% block title %}Quiz Question{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Question {{ question_id }}: {{ question.question_text }}</h1>
+    <form action="{{ url_for('quiz', question_id=question_id+1) }}" method="post">
+        {% for option in question.options %}
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="user_answer" value="{{ loop.index }}" required>
+                <label class="form-check-label">{{ option }}</label>
+            </div>
+        {% endfor %}
+
+        <!-- Pass along previous answers -->
+        <input type="hidden" name="answers" value="{{ answers }}">
+
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+</div>
+{% endblock %}
