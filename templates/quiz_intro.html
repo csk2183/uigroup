@@ -2,11 +2,12 @@
 {% extends 'navbar.html' %}
 
 {% block title %}Quiz Introduction - Soccer Rules{% endblock %}
-
+<!-- inline styles are temporary-->
 {% block content %}
-<div class="container mt-4 text-center">
-    <h1>Welcome to the Offside Rules Quiz!</h1>
-    <p>Test your knowledge about soccer rules and see how much you've learned.</p>
-    <a href="{{ url_for('quiz', question_id=1) }}" class="btn btn-primary">Start Quiz</a>
+<div class="container mt-4 text-center" style="max-width: 600px; margin: auto;">
+    <h1 style="font-weight: bold; color: #28a745;">Offside Rule Mastery Assessment</h1>
+    <h5 style="margin-bottom: 1rem;">Step off the sidelines and test your skills with the Offside Rule Mastery Quiz!</h5>
+    <img src="/static/data/learning/offside_example.jpg" alt="Offside Rule Illustration" style="width: 100%; height: auto; margin-bottom: 2rem;">
+    <a href="{{ url_for('quiz', question_id=1) }}" class="btn btn-success btn-lg" style="width: 100%;">Begin Quiz</a>
 </div>
 {% endblock %}
