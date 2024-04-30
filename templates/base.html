@@ -1,0 +1,27 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link to main.css or additional stylesheets -->
+</head>
+<body class="general">
+    {% include 'navbar.html' %}
+
+    {% block content %}
+    <!-- Content overridden by child templates -->
+    {% endblock %}
+
+    <footer class="footer bg-light text-center text-lg-start mt-auto">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2024 Rule 11 - All rights reserved.
+            <br>
+            Powered by COMS4170
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
