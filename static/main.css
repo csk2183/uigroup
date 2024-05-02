@@ -90,14 +90,6 @@ p {
     white-space: nowrap; /* Prevents breaking into a new line */
 }
 
-.sub-container {
-    background-color: #fff0db; /* Light beige background for the content area */
-    padding: 20px;
-    border-radius: 15px; /* Rounded corners for the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-/* Styling for interactive buttons */
 .btn-primary {
     color: #a8a8a8;
     background-color: #006417; /* Custom green color to match the brand theme */
@@ -107,6 +99,17 @@ p {
 .btn-primary:focus {
     background-color: #006417 !important; /* Custom green color to match the brand theme */
     color: white;
+}
+
+.btn-back {
+    color: #a8a8a8;
+    background-color: #640000; /* Dark red background */
+    border: none; /* No border for a cleaner look */
+}
+.btn-back:hover,
+.btn-back:focus {
+    background-color: #640000 !important; /* Ensures background color stays consistent on hover and focus */
+    color: white; /* Changes text color to white for better visibility */
 }
 
 .image-container {
@@ -119,6 +122,11 @@ p {
     width: 100%; /* Full width of the container */
     height: 100%; /* Full height of the container */
     object-fit: cover; /* Covers the area, may crop the image */
+}
+
+.soccer-border {
+    border-top: 3px solid red;
+    border-bottom: 3px solid red;
 }
 
 .h5 {
@@ -135,16 +143,24 @@ p {
 }
 
 .nav-tabs .nav-link {
-    background-color: #373737; /* Custom green color */
+    background-color: #373737;
+    color: #a8a8a8;
+    border-color: #373737;
 }
 
 .nav-tabs .nav-link.active {
-    background-color: #006417; /* Custom green color */
-    color: #a8a8a8;
-    border-color: #004711 #004711 #fff; /* Green borders on the sides and bottom, white on the bottom to blend with the tab content area */
+    background-color: #a8a8a8;
+    color: #373737;
+    border-color: #a8a8a8;
 }
 .nav-tabs .nav-link:hover,
 .nav-tabs .nav-link:focus {
     color: white !important;
     border: 0px;
+}
+
+.tab-content {
+    border: 2px solid #a8a8a8;
+    padding: 10px;
+    margin-top: 0px;
 }

@@ -6,7 +6,7 @@
 {% block content %}
 <div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <div class="container mt-4">
+    <div class="container">
         <div class="header-container">
             <h1 class="accent-text">Basic Rules of Soccer</h1>
         </div>
@@ -34,29 +34,49 @@
                 <div class="tab-pane active" id="general" role="tabpanel" aria-labelledby="general-tab">
                     <!-- Content for General Rules -->
                     <div class="content-section">
-                        <h2 class="h5">General Rules Explanation:</h2>
-                        <div class="ratio ratio-16x9 image-container">
+                        <div class="ratio ratio-21x9">
                             <iframe src="https://www.youtube.com/embed/qknP-E-vPQ4" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="field" role="tabpanel" aria-labelledby="field-tab">
                     <!-- Content for Field Structure -->
-                    <img src="../static/data/learning/soccer-field-structure.png" alt="Soccer field structure" class="img-fluid">
+                    <div class="content-section">
+                        <div class="ratio ratio-21x9">
+                            <img src="../static/data/learning/soccer-field-structure.png" alt="Soccer field structure" class="img-fluid">
+                        </div>
+                        <p class="text-muted small mt-2" style="margin-bottom:0">11 players per side: Defense (D), Midfield (M), Forward (F), Goalie (G)</p>
+                    </div>
                 </div>
                 <div class="tab-pane" id="throw-in" role="tabpanel" aria-labelledby="throw-in-tab">
                     <!-- Content for Throw In -->
-                    <img src="../static/data/learning/out-of-bounds-throw-in.png" alt="Out-of-bounds-throw-in" class="img-fluid">
+                    <div class="content-section">
+                        <div class="ratio ratio-21x9">
+                            <img src="../static/data/learning/out-of-bounds-throw-in.png" alt="Out-of-bounds-throw-in" class="img-fluid soccer-border">
+                        </div>
+                        <p class="text-muted small mt-2" style="margin-bottom:0">What happens: Ball crosses the red lines</p>
+                        <p class="text-muted small mt-2" style="margin-bottom:0">Result: If Team A touches the ball last, then Team B throws the ball in</p>
+                    </div>
                 </div>
                 <div class="tab-pane" id="corner" role="tabpanel" aria-labelledby="corner-tab">
                     <!-- Content for Corner -->
-                    <img src="../static/data/learning/out-of-bounds-corner.png" alt="Out-of-bounds-corner" class="img-fluid">
+                    <div class="content-section">
+                        <div class="ratio ratio-21x9">
+                            <img src="../static/data/learning/out-of-bounds-throw-in.png" alt="Out-of-bounds-throw-in" class="img-fluid soccer-border">
+                        </div>
+                        <p class="text-muted small mt-2" style="margin-bottom:0">What happens: Ball crosses the yellow lines</p>
+                        <p class="text-muted small mt-2" style="margin-bottom:0">Result: If the attackers touch the ball last, then the defenders get a goal kick. Otherwise, the attackers get a corner kick.</p>
+                    </div>
                 </div>
             </div>
-    
-        <div class="row mt-4">
-            <div class="col text-center">
-                <a href="/offside-explained" class="btn btn-primary">Offsides Explained</a>
+        </div>
+
+        <div class="row justify-content-between">
+            <div class="col-auto mt-4">
+                <a href="/" class="btn btn-back">Back to Home</a>  <!-- Link back to the home page -->
+            </div>
+            <div class="col-auto mt-4">
+                <a href="/offside-explained" class="btn btn-primary">Skip to Offsides Explained</a>  <!-- Link to the offsides explained page -->
             </div>
         </div>
     </div>
