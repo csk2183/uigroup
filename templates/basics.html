@@ -1,0 +1,80 @@
+<!-- home.html -->
+{% extends 'navbar.html' %}
+
+{% block title %}Home - Soccer Rules{% endblock %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Soccer</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Discover The Beautiful Game's Basics</h1>
+        <!-- Home page content here -->
+        <p>Welcome to the soccer learning platform. Start learning about the rules, play quizzes, and have fun!</p>
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="h5 mt-3">General rules explanation:</h2>
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/qknP-E-vPQ4?si=7cIOsBtfyYGJWyEn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="h5 mt-3">Field structure:</h2>
+                <img src="../static/data/learning/soccer-field-structure.png" alt="Soccer field structure" class="img-fluid" style="max-width: 300px; height: auto;">
+                <br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6 class="fw-bold">Explained</h3>
+                        <p class="text-muted small">11 players per side</p>
+                        <p class="text-muted small">Defense</p>
+                        <p class="text-muted small">Midfield</p>
+                        <p class="text-muted small">Forward</p>
+                        <p class="text-muted small">Goalie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="h5 mt-3">Out of bounds (throw in):</h2>
+                <img src="../static/data/learning/out-of-bounds-throw-in.png" alt="Out-of-bounds-throw-in" class="img-fluid" style="max-width: 300px; height: auto;">
+                <br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6 class="fw-bold">What happens</h3>
+                        <p class="text-muted small">Ball crosses the red lines</p>
+                        <h6 class="fw-bold">Result?</h3>
+                        <p class="text-muted small">If Team A touches ball last, Team B throws ball in</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="h5 mt-3">Out of bounds (corner):</h2>
+                <img src="../static/data/learning/out-of-bounds-corner.png" alt="Out-of-bounds-corner" class="img-fluid" style="max-width: 300px; height: auto;">
+                <br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6 class="fw-bold">What happens</h3>
+                        <p class="text-muted small">Ball crosses the yellow lines</p>
+                        <h6 class="fw-bold">Result?</h3>
+                        <p class="text-muted small">If attackers touches ball last, defenders get a goal kick. Otherwise, attackers get a corner kick.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <a href="/offside-explained" class="btn btn-primary">Offsides Explained</a>
+        </div>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}
