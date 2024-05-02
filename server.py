@@ -92,8 +92,6 @@ def quiz(question_id):
     question = quiz_questions[question_id - 1]
     return render_template('quiz.html', question=question, question_id=question_id, answers=answers)
 
-
-
 @app.route('/quiz/results')
 def quiz_results():
     answers = request.args.get('answers', '')

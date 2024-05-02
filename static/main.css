@@ -1,6 +1,6 @@
 /* main.css */
 
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 html, body {
     height: 100%; /* Ensures minimum height of the viewport */
@@ -8,44 +8,143 @@ html, body {
     padding: 0;
     display: flex;
     flex-direction: column; /* Makes the main axis vertical */
+    font-family: 'Roboto', sans-serif;
 }
-
 
 /*  using this as background*/
 .general{
-    background-color: #28a745;
+    background-color: #fff0db;
+}
+
+.footer-colors {
+    color: #373737;
+    background: #a8a8a8;
+    font-family: 'Roboto', sans-serif; /* Roboto font for consistency */
 }
 
 .navbar {
-    background-color: #343a40; /* A dark gray color, similar to Bootstrap's dark theme */
+    padding: 0; /* Removes any default padding */
+    background: #373737;
+    font-family: 'Roboto', sans-serif; /* Roboto font for consistency */
 }
 
 .navbar-brand {
-    color: #28a745 !important; /* Bootstrap's white color */
-    font-weight: bold;
-    margin-right: 2em; /* Give some space next to the brand */
+    background-size: 10px 10px; /* Adjust size of the diagonal lines */
+    padding: 8px 15px; /* Adjust padding to fill navbar vertically */
+    display: flex; /* Ensures the brand fills the height */
+    align-items: center; /* Centers the text vertically */
+    height: 100%; /* Fill the height of the navbar */
+    color: #a8a8a8 !important; /* Bootstrap's white color */
+    margin-right: 1.5em; /* Give some space next to the brand */
+    font-size: 1.5rem; /* Larger size for brand name */
+    font-weight: bold; /* Bold font for emphasis */
+    border-radius: 2px; /* subtle rounding of corners */
+    padding-left: 1.5em;
+    background: linear-gradient(135deg, #006417 0%, #373737 90%);
+    padding-right: 1.5em;
+}
+.navbar-brand:hover,
+.navbar-brand:focus {
+    color: white !important;
+    border-radius: 5px; /* Rounded corners for a modern look */
 }
 
 .nav-link {
-    color: black !important; /* Bootstrap's white color */
-    margin-right: 1em; /* Space between nav items */
+    font-size: 1.1rem; /* Larger size for brand name */
+    color: #a8a8a8;
+    font-weight: bold; /* Bold font for emphasis */
+    margin-right: 1.5em; /* Space between nav items */
 }
-
 .nav-link:hover,
 .nav-link:focus {
-    color: #dc3545 !important; /* Bootstrap's danger color for hover state */
+    color: white !important;
+    border-radius: 5px; /* Rounded corners for a modern look */
 }
 
-.navbar-toggler {
-    border-color: #dc3545; /* Bootstrap's danger color */
+.container {
+    background-color: #fff0db; /* Light beige background for the content area */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+h1, h2 {
+    color: #373737; /* Dark gray for better visibility and contrast */
+}
+p {
+    color: #a8a8a8; /* Lighter text color for paragraphs */
+    line-height: 1.6; /* Improved line spacing for readability */
 }
 
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(220, 53, 69, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+.header-container {
+    display: flex; /* Enables Flexbox */
+    align-items: center; /* Aligns items vertically in the center */
+    justify-content: center; /* Centers the items horizontally */
+    text-align: center; /* Ensures text within each header is centered */
+}
+.header-container h1,
+.header-container h2 {
+    margin: 0 6px; /* Adds horizontal spacing and removes default vertical margin */
+    font-size: 2rem; /* Slightly smaller than h1 */
+    white-space: nowrap; /* Prevents breaking into a new line */
 }
 
-.container h1 {
-    color: white; /* Bootstrap's success color */
+.sub-container {
+    background-color: #fff0db; /* Light beige background for the content area */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-/* Add any additional custom styles below */
+/* Styling for interactive buttons */
+.btn-primary {
+    color: #a8a8a8;
+    background-color: #006417; /* Custom green color to match the brand theme */
+    border: none; /* No border for a cleaner look */
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #006417 !important; /* Custom green color to match the brand theme */
+    color: white;
+}
+
+.image-container {
+    height: 70%; /* Set a fixed height or as needed */
+    width: 100%; /* Ensures the container takes full width of the column */
+    overflow: hidden; /* Hides parts of the image that overflow the container */
+}
+
+.img-fluid {
+    width: 100%; /* Full width of the container */
+    height: 100%; /* Full height of the container */
+    object-fit: cover; /* Covers the area, may crop the image */
+}
+
+.h5 {
+    color: #373737; /* Green color, consider using a rich shade that stands out */
+    letter-spacing: 0.01em; /* Adding some spacing between letters for emphasis */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
+}
+
+.accent-text {
+    color: #006417; /* Green color, consider using a rich shade that stands out */
+    font-weight: bold; /* Corrected property for bolding text */
+    letter-spacing: 0.01em; /* Adding some spacing between letters for emphasis */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
+}
+
+.nav-tabs .nav-link {
+    background-color: #373737; /* Custom green color */
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #006417; /* Custom green color */
+    color: #a8a8a8;
+    border-color: #004711 #004711 #fff; /* Green borders on the sides and bottom, white on the bottom to blend with the tab content area */
+}
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+    color: white !important;
+    border: 0px;
+}
