@@ -296,3 +296,31 @@ p {
 .term:hover {
     background-color: #a8a8a8;
 }
+
+.term-slot {
+    border: 2px dashed #ccc;
+    padding: 10px;
+    min-height: 20px;
+    display: inline-block; /* or block depending on layout */
+    width: 200px; /* adjust as necessary */
+    margin-right: 5px;
+    background-color: #f9f9f9;
+}
+
+.term.dragging {
+    opacity: 0.5; /* Make the term semi-transparent when dragging */
+    z-index: 1000; /* Very high z-index to keep it on top */
+    transform: scale(0.9); /* Optionally make it slightly smaller */
+}
+.term {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.term-slot {
+    border: 2px dashed #ccc;
+    padding: 10px;
+    min-height: 20px;
+    display: inline-block; /* or block depending on layout */
+    width: 200px; /* adjust as necessary */
+    background-color: #f9f9f9;
+    vertical-align: top; /* Aligns better with inline content */
+}

@@ -10,7 +10,6 @@
     <div class="container mt-4">
         <h1 class="mb-4">Question {{ question_id }}: {{ question.question_text }}</h1>
         {% if question.image_path %}
-            <!-- Image with the quiz-image class for styling -->
             <img src="{{ question.image_path }}" alt="Quiz Image" class="img-fluid mb-3 quiz-image">
         {% endif %}
         <form id="quizForm" method="post">
@@ -27,37 +26,49 @@
         <button id="nextQuestionButton" class="btn btn-primary mt-3" style="display: none;" onclick="location.href='{{ url_for('quiz', question_id=question_id+1) }}'">Next Question</button>
     </div>
 
-    {% else %}
+    {% elif question.question_type == 'match_terms' %}
     <div class="container mt-4">
         <h1 class="mb-4">{{ question.question_text }}</h1>
-        <div class="drag-and-drop">
-            <div class="statements">
-                {% for statement in question.statements %}
-                <div class="statement">
-                    <p>Question {{ question_id + loop.index0 }}: {{ statement.text }}</p>
-                    <br>
+        <form id="quizForm" method="post">
+            <div class="drag-and-drop">
+                <div class="statements">
+                    {% for statement in question.statements %}
+                    
+                    <div class="statement">
+                        <p>Question {{ question_id + loop.index0 }}:
+                            {% set parts = statement.text.split('_') %}
+                            {% for i in range(parts | length) %}
+                                {% if i > 0 %}
+                                    <span class="term-slot" droppable="true" ondrop="drop(event)" ondragover="allowDrop(event)"></span>
+                                {% endif %}
+                                {{ parts[i] }}
+                            {% endfor %}
+                        </p>
+                    </div>
+                    
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-            <div class="terms">
-                <div class="word-bank">
-                    <h2 class="word-bank-title">Word Bank</h2>
-                    <ul class="term-list">
-                        {% for term in question.terms %}
-                        <li class="term" draggable="true">{{ term }}</li>
-                        {% if loop.index is divisibleby 2 and not loop.last %}
-                        </ul>
+                <div class="terms">
+                    <div class="word-bank">
+                        <h2 class="word-bank-title">Word Bank</h2>
                         <ul class="term-list">
-                        {% endif %}
-                        {% endfor %}
-                    </ul>
+                            {% for term in question.terms %}
+                            <li class="term" draggable="true" id="term{{ loop.index }}" ondragstart="drag(event)">{{ term }}</li>
+                            {% if loop.index is divisibleby 2 and not loop.last %}
+                            </ul>
+                            <ul class="term-list">
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+        <div id="feedbackMessage" class="feedback"></div>
         <button id="nextQuestionButton" class="btn btn-primary mt-3" style="display: none;" onclick="location.href='{{ url_for('quiz', question_id=question_id+1) }}'">Next Question</button>
     </div>
-
     {% endif %}
+    
 </div>
 {% endblock %}
-
