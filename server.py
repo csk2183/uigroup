@@ -8,21 +8,63 @@ app = Flask(__name__)
 quiz_questions = [
     {
         "question_id": 1,
-        "question_text": "When is a player not considered offside?",
-        "options": ["When receiving the ball directly from a goal kick.", "When they are in their own half of the pitch.", "Receiving a throw in from while standing behind second-last defender.", "All of the above."],
-        "answer": "All of the above."
+        "question_type": "multiple_choice",
+        "question_text": "What is considered offside position in soccer?",
+        "options": [
+            "Being in the opponent’s half of the field.",
+            "Being behind the ball when it is played.",
+            "Being nearer to the opponent's goal than both the ball and the second last opponent when the ball is played to them.",
+            "Standing in the goalkeeper’s area."
+        ],
+        "answer": "3"
     },
     {
         "question_id": 2,
-        "question_text": "A defender's attempted clearance mis-hits to a forward who was in an offside position at the time the ball was played. The forward then scores. Is the goal allowed?",
-        "options": ["Yes, because the ball came from an opponent.", "No, because the forward was in an offside position.", "Yes, but only if the referee determines the defender played the ball deliberately.", "No, unless the ball was played to the forward by a teammate."],
-        "answer": "Yes, but only if the referee determines the defender played the ball deliberately."
+        "question_type": "multiple_choice",
+        "question_text": "When does being in an offside position lead to an offside rules offense?",
+        "options": [
+            "At any time during the game when the player is in the offside position.",
+            "When the player is in the offside position and actively interferes with play.", 
+            "When the player is passively standing on the field.", 
+            "Only during a corner kick."
+        ],
+        "answer": "2"
     },
     {
         "question_id": 3,
-        "question_text": "The attacking goalie does a goal kick towards a player behind the second defender. The attacking player then scores",
-        "options": ["Offside Call", "No Offside Call"],
-        "answer": "No Offside Call"
+        "question_type": "multiple_choice",
+        "question_text": "When is a player not considered offside?",
+        "options": [
+            "When receiving the ball directly from a goal kick.", 
+            "When they are in their own half of the pitch.", 
+            "Receiving a throw in from while standing behind second-last defender.", 
+            "All of the above."
+        ],
+        "answer": "4"
+    },
+    {
+        "question_id": 4,
+        "question_type": "multiple_choice",
+        "question_text": "What determines whether a player is offside when the ball is played to them?",
+        "options": [
+            "The position of the ball only.",
+            "The position of the player and the second last opponent at the moment the ball is played.",
+            "The position of the player when the play starts.",
+            "The referee’s discretion without any specific criteria."
+        ],
+        "answer": "2"
+    },
+    {
+        "question_id": 5,
+        "question_type": "multiple_choice",
+        "question_text": "In which area of the field can a player never be offside?",
+        "options": [
+            "In the opponent's penalty area.",
+            "In the center circle.",
+            "In their own half of the field.",
+            "In the goal area."
+        ],
+        "answer": "3"
     },
 ]
 
@@ -30,9 +72,6 @@ quiz_questions = [
 @app.route('/')
 def home():
     return render_template('home.html')
-    access_time = datetime.now()  # Capture the current time
-    print(f"Basics home page accessed at {access_time}")
-    return render_template('home.html')  # Assuming you have a home.html file with a Start button
 
 # Learning page that takes a lesson number variable
 @app.route('/learning/basics')
@@ -86,7 +125,6 @@ def quiz(question_id):
             answers += user_answer
 
     if question_id > len(quiz_questions):
-        # Redirect to results if it's the last question
         return redirect(url_for('quiz_results', answers=answers))
 
     question = quiz_questions[question_id - 1]
@@ -97,7 +135,6 @@ def quiz_results():
     answers = request.args.get('answers', '')
     score = sum(1 for i, answer in enumerate(answers, start=1) if quiz_questions[i-1]['answer'] == quiz_questions[i-1]['options'][int(answer)-1])
     return render_template('results.html', score=score, total=len(quiz_questions))
-
 
 if __name__ == '__main__':
     app.run(debug=True)

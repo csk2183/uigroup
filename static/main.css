@@ -101,6 +101,11 @@ p {
     margin-right: 40px;
 }
 
+.thin-container {
+    max-width: 600px;
+    padding-bottom: 60px;  /* Adds padding inside the container */
+}
+
 .header-container {
     display: flex; /* Enables Flexbox */
     align-items: center; /* Aligns items vertically in the center */
@@ -125,6 +130,11 @@ p {
     background-color: #006417 !important; /* Custom green color to match the brand theme */
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+.btn-primary:disabled {
+    background-color: #a8a8a8; /* Dark grey color */
+    color: white;
+    cursor: not-allowed; /* Show a not-allowed cursor to indicate it's disabled */
 }
 
 .btn-back {
@@ -197,4 +207,22 @@ p {
     border: 2px solid #a8a8a8;
     padding: 10px;
     margin-top: 0px;
+}
+
+.correct-answer {
+    color: #006417;
+}
+
+.incorrect-answer {
+    color: red;
+}
+
+.feedback {
+    font-size: 1.2rem;
+    color: #006417;
+    margin-top: 20px;
+}
+
+.feedback.incorrect {
+    color: red;
 }
