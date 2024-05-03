@@ -17,7 +17,6 @@
                 <label class="form-check-label" for="option{{ loop.index }}">{{ option }}</label>
             </div>         
             {% endfor %}
-            <input type="hidden" name="answers" value="{{ answers }}">
             <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
         <div id="feedbackMessage" class="feedback"></div>

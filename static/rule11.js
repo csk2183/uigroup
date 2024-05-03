@@ -14,9 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const userAnswerValue = userAnswer.value;
-            console.log(userAnswer)
             const correctAnswer = userAnswer.dataset.correct; // This should be set in your HTML as data attribute
-            console.log(correctAnswer)
 
             // Apply styling based on the answer correctness
             document.querySelectorAll('.form-check-input').forEach(input => {
@@ -37,6 +35,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 feedbackMessage.textContent = "Correct.";
                 feedbackMessage.classList.remove('incorrect');
                 feedbackMessage.classList.add('correct');
+
+                fetch('/quiz/add_correct', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ increment: 1 })
+                }).then(response => {
+                    // Handle response if needed
+                }).catch(error => {
+                    console.error('Error:', error);
+                });
             } else {
                 feedbackMessage.textContent = "Incorrect.";
                 feedbackMessage.classList.add('incorrect');

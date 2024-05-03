@@ -68,6 +68,8 @@ quiz_questions = [
     },
 ]
 
+correct_answers = 0
+
 # Home page with a Start button
 @app.route('/')
 def home():
@@ -92,49 +94,27 @@ def exceptions():
     print(f"Exceptions page accessed at {access_time}")
     return render_template('exceptions.html')
 
-
-"""
-# Quiz page that takes a quiz number variable
-@app.route('/quiz/<int:quiz_number>')
-def quiz(quiz_number):
-    return render_template('quiz.html', quiz_number=quiz_number)  # Pass the quiz number to the template
-
-
-# Quiz results page
-@app.route('/results', methods=['POST'])
-def results():
-    # For simplicity, assuming results are sent via POST request
-    data = request.form
-    # Process results here (e.g., calculate score)
-    return render_template('results.html', results=data)  # Pass results to the template
-"""
-
 @app.route('/quiz/intro')
 def quiz_intro():
     return render_template('quiz_intro.html')
 
-
-@app.route('/quiz/<int:question_id>', methods=['GET', 'POST'])
+@app.route('/quiz/<int:question_id>')
 def quiz(question_id):
-    answers = ''
-    if request.method == 'POST':
-        # Retrieve the current and previous answers
-        answers = request.form.get('answers', '')
-        user_answer = request.form.get('user_answer', '')
-        if user_answer:
-            answers += user_answer
-
     if question_id > len(quiz_questions):
-        return redirect(url_for('quiz_results', answers=answers))
+        return redirect(url_for('quiz_results'))
 
     question = quiz_questions[question_id - 1]
-    return render_template('quiz.html', question=question, question_id=question_id, answers=answers)
+    return render_template('quiz.html', question=question, question_id=question_id)
+
+@app.route('/quiz/add_correct', methods=['POST'])
+def quiz_add_correct():
+    global correct_answers
+    correct_answers += 1
+    return 'Correct answer added successfully.', 200
 
 @app.route('/quiz/results')
 def quiz_results():
-    answers = request.args.get('answers', '')
-    score = sum(1 for i, answer in enumerate(answers, start=1) if quiz_questions[i-1]['answer'] == quiz_questions[i-1]['options'][int(answer)-1])
-    return render_template('results.html', score=score, total=len(quiz_questions))
+    return render_template('results.html', score=correct_answers, total=len(quiz_questions))
 
 if __name__ == '__main__':
     app.run(debug=True)
