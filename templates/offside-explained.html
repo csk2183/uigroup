@@ -1,44 +1,55 @@
-<!-- home.html -->
-{% extends 'navbar.html' %}
+<!-- offside-explained.html -->
+{% extends 'base.html' %}
 
 {% block title %}Offsides Explained{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1 class="text-center mb-4">Offsides Explained</h1>
-    <!-- Home page content here -->
-    <p>Welcome to the more in depth portion of learning on this platform. Start learning about the specifc rules of offsides in soccer!</p>
-    <div class="row">
-        <div class="col-md-6">
-            <h2 class="h5 mt-3">
-                In soccer, a player is offside if they are nearer to the opponent's goal line than both the ball and the second last opponent when the ball is played to them, unless they are in their own half of the field.
-            </h2>
-            <img src="../static/data/learning/general-offsides.png" alt="general-offsides" class="img-fluid" style="max-width: 300px; height: auto;">
-        </div>
-        <div class="col-md-6">
-            <h2 class="h5 mt-3">Offsides in action:</h2>
-            <p class="text-muted small">Key moment: interfering with the play at the moment when the ball is passed</p>
-            <div class="ratio ratio-16x9">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/U01-uArNpdw?start=66&end=100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="container">
+    <h1 class="text-center accent-text mb-3">Offsides Explained</h1>
+    <p class="mb-5">Welcome to the more in-depth portion of our learning platform. Start discovering the specific rules of offsides in soccer!</p>
+
+    <div class="row sub-container">
+        <div class="col-md-4">
+            <div class="mb-3">
+                <img src="../static/data/learning/general-offsides.png" alt="General offsides" class="img-fluid">
             </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h2 class="h5 mt-3">Notable:</h2>
-            <p class="text-muted small">Only the team with possession can be offside and offside can only happen on the attacking part of the field.</p>
-            <h2 class="h5 mt-3">Misunderstandings:</h2>
-            <p class="text-muted small">Can an attacking player stand offside?</p>
-            <p class="text-muted small">Yes! Offside can only be called when an opponent is offside AND actively part of the play.</p>
         </div>
-        <div class="col-md-6">
-            <h2 class="h5 mt-3">Complicated offsides:</h2>
-            <p class="text-muted small">A player is NOT offside if head/arms are in offside but head, body, and feet are not.</p>
-            <img src="../static/data/learning/complicated-offsides.png" alt="complicated-offsides" class="img-fluid" style="max-width: 300px; height: auto;">
-            <p class="text-muted small">Offside is called when he plays the ball from offside position rebounding from a non-deliberate play (bouncing off post or saved)</p>
+        <div class="col-md-8">
+            <h2 class="h5 mt-3">Basic of offsides rules</h2>
+            <p class="mt-3"> In soccer, a player is <span class="accent-text">OFFSIDE</span> if they are nearer to the opponent's goal than both the ball and their second-to-last opponent when the ball is played to them, unless they are in their own half of the field.</p>
         </div>
     </div>
-    <div class="row">
-        <a href="/exceptions" class="btn btn-primary">Exceptions Explained</a>
+    <div class="row sub-container mt-4">
+        <div class="col-md-7">
+            <h2 class="h5 mt-4">Offsides in action</h2>
+            <p class="mt-4">Key moment to look at when determining offsides: interfering with the play at the moment <span class="bold-text">when the ball is passed</span></p>
+            <p class="mt-4">Remember: only the team with the ball can be offside, and offside can only happen in the attacking part of the field</p>
+        </div>
+        <div class="col-md-5">
+            <div class="ratio ratio-16x9 mb-3">
+                <iframe src="https://www.youtube.com/embed/U01-uArNpdw?start=66&end=100" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="row sub-container mt-4">
+        <div class="col-md-3">
+            <div class="mb-3">
+                <img src="../static/data/learning/complicated-offsides.png" alt="Complicated offsides" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h2 class="h5 mt-5">The body can complicate offside rules</h2>
+            <p class="mt-4"> A player is NOT offside even if their hands/arms are in offside position as long as their head, body, and feet are in onside position.</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col-auto mt-4">
+            <a href="/basics" class="btn btn-back">Back to Basics</a>  <!-- Link back to the basics page -->
+        </div>
+        <div class="col-auto mt-4">
+            <a href="/exceptions" class="btn btn-primary">Go to Exceptions</a>  <!-- Link to the exceptions page -->
+        </div>
     </div>
 </div>
 {% endblock %}

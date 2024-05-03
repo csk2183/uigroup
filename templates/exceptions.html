@@ -1,36 +1,73 @@
 <!-- exceptions.html -->
-{% extends 'navbar.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Exceptions Explained{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h1 class="text-center mb-4">Exceptions Explained</h1>
-    <!-- Home page content here -->
-    <p>Welcome to the most in depth portion of learning on this platform. Learn about the exceptions of offsides in soccer!</p>
-    <div class="row">
-        <div class="col-md-6">
-            <h2 class="h5 mt-3">Offsides exceptions in action:</h2>
+<div class="container">
+    <h1 class="text-center accent-text mb-3">Exceptions Explained</h1>
+    <p class="mb-5">Welcome to the most in depth portion of our learning platform. Learn about the exceptions of the offside rules in soccer!</p>
+
+    <div class="sub-container">
+        <div class="row">
+            <h2 class="h5 text-center mb-3">Simple offside exceptions in the half field:</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <img src="../static/data/learning/half-field-their-side.png" alt="half-field-their-side" class="img-fluid">
+                </div>
+                <p>A player cannot be offside while on their own side of the field.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <img src="../static/data/learning/half-field-behind-ball.png" alt="half-field-behind-ball" class="img-fluid">
+                </div>
+                <p>If the player is behind the ball, they cannot be offside.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="sub-container mt-4">
+        <div class="row">
+            <h2 class="h5 text-center mb-3">More in-depth offside exception in the full field:</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <img src="../static/data/learning/before-pass.png" alt="before pass" class="img-fluid">
+                </div>
+                <p>Offside line is established before the pass is made, meaning the far blue player is offsides, while the middle blue player is onsides.</p>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <img src="../static/data/learning/after-pass.png" alt="after pass" class="img-fluid">
+                </div>
+                <p>After the pass is made, the offside player does not interfere in the play, so the player who was not offside can legally play the ball.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row sub-container mt-4">
+        <div class="col-md-7">
+            <h2 class="h5 mt-4">Offsides exceptions in action</h2>
+            <p class="mt-4">Key moment to look at when determining offsides: interfering with the play at the moment <span class="bold-text">when the ball is passed</span></p>
+            <p class="mt-4">Remember: only the team with the ball can be offside, and offside can only happen in the attacking part of the field</p>
+        </div>
+        <div class="col-md-5">
             <div class="ratio ratio-16x9">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/U01-uArNpdw?start=101&end=153" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-            <h2 class="h5 mt-3">Not in play:</h2>
-            <h2 class="h5 mt-3">Before pass</h2>
-            <p class="text-muted small">Offside line is established before the pass is made</p>
-            <img src="../static/data/learning/before-pass.png" alt="before-pass" class="img-fluid" style="max-width: 300px; height: auto;">
-            <h2 class="h5 mt-3">After pass</h2>
-            <p class="text-muted small">Offside player removed themselves from interfering in the play, so the player who was not offside can legally play the ball</p>
-            <img src="../static/data/learning/after-pass.png" alt="after-pass" class="img-fluid" style="max-width: 300px; height: auto;">
         </div>
-        <div class="col-md-6">
-            <h2 class="h5 mt-3">Half field:</h2>
-            <p class="text-muted small">A player cannot be offside in their side of the field.</p>
-            <img src="../static/data/learning/half-field-their-side.png" alt="half-field-their-side" class="img-fluid" style="max-width: 300px; height: auto;">
-            <p class="text-muted small">If the player is behind the ball (offside line), they cannot be offside</p>
-            <img src="../static/data/learning/half-field-their-side.png" alt="half-field-behind-ball" class="img-fluid" style="max-width: 300px; height: auto;">
     </div>
-    <div class="row">
-        <a href="/quiz/intro" class="btn btn-primary">Quiz</a>
+
+    <div class="row justify-content-between">
+        <div class="col-auto mt-4">
+            <a href="/offside-explained" class="btn btn-back">Back to Offsides Explained</a>  <!-- Link back to the offsides explained page -->
+        </div>
+        <div class="col-auto mt-4">
+            <a href="/quiz/intro" class="btn btn-primary">Go to Quiz</a>  <!-- Link to the exceptions page -->
+        </div>
     </div>
 </div>
 {% endblock %}
