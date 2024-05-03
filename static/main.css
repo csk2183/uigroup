@@ -198,3 +198,11 @@ p {
     padding: 10px;
     margin-top: 0px;
 }
+
+.quiz-image {
+    width: 300px;
+    height: auto;
+    display: block;
+    margin-left: 0;
+}
+
