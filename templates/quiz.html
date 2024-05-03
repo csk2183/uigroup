@@ -34,17 +34,24 @@
             <div class="statements">
                 {% for statement in question.statements %}
                 <div class="statement">
-                    <p>Question {{ question_id + + loop.index0 }}: {{ statement.text }}</p>
+                    <p>Question {{ question_id + loop.index0 }}: {{ statement.text }}</p>
                     <br>
                 </div>
                 {% endfor %}
             </div>
             <div class="terms">
-                <ul class="term-list">
-                    {% for term in question.terms %}
-                    <li class="term" draggable="true">{{ term }}</li>
-                    {% endfor %}
-                </ul>
+                <div class="word-bank">
+                    <h2 class="word-bank-title">Word Bank</h2>
+                    <ul class="term-list">
+                        {% for term in question.terms %}
+                        <li class="term" draggable="true">{{ term }}</li>
+                        {% if loop.index is divisibleby 2 and not loop.last %}
+                        </ul>
+                        <ul class="term-list">
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
         <button id="nextQuestionButton" class="btn btn-primary mt-3" style="display: none;" onclick="location.href='{{ url_for('quiz', question_id=question_id+1) }}'">Next Question</button>

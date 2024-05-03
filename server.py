@@ -95,7 +95,7 @@ quiz_questions = [
         ],
         "statements": [
             {
-                "text": "A player is in an ________ when they are nearer to the opponent's goal line than both the ball and the ________, except when they are in their own half of the field, defined by the ________.",
+                "text": "A player is in an ________________________ when they are nearer to the opponent's goal line than both the ball and the ________________________, except when they are in their own half of the field, defined by the ________________________.",
                 "blanks": [
                     "offside Position",
                     "second-Last Opponent",
@@ -103,14 +103,14 @@ quiz_questions = [
                 ]
             },
             {
-                "text": "Being in an offside position is not an offence unless the player becomes involved in active play by ________ or ________ by playing or touching the ball passed or touched by a teammate.",
+                "text": "Being in an offside position is not an offence unless the player becomes involved in active play by ________________________ or ________________________ by playing or touching the ball passed or touched by a teammate.",
                 "blanks": [
                     "interfering with play",
                     "interfering with an opponent"
                 ]
             },
             {
-                "text": "A player is considered to be ________ if they are in an offside position and receive the ball from an opponent who deliberately plays the ball (except from a deliberate save), thereby potentially ________ from their position.",
+                "text": "A player is considered to be ________________________ if they are in an offside position and receive the ball from an opponent who deliberately plays the ball (except from a deliberate save), thereby potentially ________________________ from their position.",
                 "blanks": [
                     "passive offside",
                     "gaining an advantage"

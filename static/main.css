@@ -233,3 +233,66 @@ p {
     margin-left: 0;
 }
 
+.drag-and-drop {
+    display: flex;
+    justify-content: space-between;
+}
+
+.statements {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.statement {
+    padding: 15px;
+    padding-bottom: 0px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #373737;
+}
+
+.terms {
+    flex: 1;
+}
+
+.word-bank {
+    border: 1px solid #373737; /* Adds a solid border around the word bank */
+    padding: 20px; /* Padding inside the word bank */
+    border-radius: 8px; /* Rounded corners for the word bank */
+}
+
+.word-bank-title {
+    text-align: center;
+    color: #373737;
+    margin-bottom: 20px; /* Space below the title inside the word bank */
+    font-weight: bold;
+}
+
+.term-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Ensures terms are spaced out evenly */
+    list-style-type: none;
+    padding: 0;
+}
+
+.term {
+    flex: 1 1 48%; /* Adjusts width to fit two terms per line comfortably */
+    border: 1px solid #373737;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    text-align: center; /* Center the text within each term */
+    margin-right: 2%; /* Right margin for spacing between terms */
+}
+
+.term:last-child {
+    margin-right: 0; /* Removes right margin for the last term to align properly */
+}
+
+.term:hover {
+    background-color: #a8a8a8;
+}
