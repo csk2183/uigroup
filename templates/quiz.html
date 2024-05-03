@@ -7,13 +7,15 @@
 <div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="/static/rule11.js"></script>
+
+    {% if question.question_type == 'multiple_choice' %}
     <div class="container mt-4">
         <h1 class="mb-4">Question {{ question_id }}: {{ question.question_text }}</h1>
         <form id="quizForm" method="post">
             {% for option in question.options %}
             <div class="form-check mb-3">
                 <input class="form-check-input" type="radio" name="user_answer" id="option{{ loop.index }}"
-                       value="{{ loop.index }}" required data-correct="{{ question.answer }}">
+                    value="{{ loop.index }}" required data-correct="{{ question.answer }}">
                 <label class="form-check-label" for="option{{ loop.index }}">{{ option }}</label>
             </div>         
             {% endfor %}
@@ -22,6 +24,31 @@
         <div id="feedbackMessage" class="feedback"></div>
         <button id="nextQuestionButton" class="btn btn-primary mt-3" style="display: none;" onclick="location.href='{{ url_for('quiz', question_id=question_id+1) }}'">Next Question</button>
     </div>
+
+    {% else %}
+    <div class="container mt-4">
+        <h1 class="mb-4">{{ question.question_text }}</h1>
+        <div class="drag-and-drop">
+            <div class="statements">
+                {% for statement in question.statements %}
+                <div class="statement">
+                    <p>Question {{ question_id + + loop.index0 }}: {{ statement.text }}</p>
+                    <br>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="terms">
+                <ul class="term-list">
+                    {% for term in question.terms %}
+                    <li class="term" draggable="true">{{ term }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <button id="nextQuestionButton" class="btn btn-primary mt-3" style="display: none;" onclick="location.href='{{ url_for('quiz', question_id=question_id+1) }}'">Next Question</button>
+    </div>
+
+    {% endif %}
 </div>
 {% endblock %}
 
