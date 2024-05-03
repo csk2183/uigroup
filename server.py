@@ -35,19 +35,19 @@ def home():
     return render_template('home.html')  # Assuming you have a home.html file with a Start button
 
 # Learning page that takes a lesson number variable
-@app.route('/basics')
+@app.route('/learning/basics')
 def basics():
     access_time = datetime.now()  # Capture the current time
     print(f"Basics page accessed at {access_time}")
     return render_template('basics.html')
 
-@app.route('/offside-explained')
+@app.route('/learning/offside-explained')
 def offside_explained():
     access_time = datetime.now()  # Capture the current time
     print(f"Offsides explained page accessed at {access_time}")
     return render_template('offside-explained.html')
 
-@app.route('/exceptions')
+@app.route('/learning/exceptions')
 def exceptions():
     access_time = datetime.now()  # Capture the current time
     print(f"Exceptions page accessed at {access_time}")
