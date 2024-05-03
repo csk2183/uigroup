@@ -1,4 +1,3 @@
-<!-- quiz.html -->
 {% extends 'base.html' %}
 
 {% block title %}Quiz Question{% endblock %}
@@ -7,10 +6,13 @@
 <div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="/static/rule11.js"></script>
-
     {% if question.question_type == 'multiple_choice' %}
     <div class="container mt-4">
         <h1 class="mb-4">Question {{ question_id }}: {{ question.question_text }}</h1>
+        {% if question.image_path %}
+            <!-- Image with the quiz-image class for styling -->
+            <img src="{{ question.image_path }}" alt="Quiz Image" class="img-fluid mb-3 quiz-image">
+        {% endif %}
         <form id="quizForm" method="post">
             {% for option in question.options %}
             <div class="form-check mb-3">

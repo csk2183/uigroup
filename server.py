@@ -68,6 +68,17 @@ quiz_questions = [
     },
     {
         "question_id": 6,
+        "question_type": "multiple_choice",
+        "question_text": "The attacking goalie does a goal kick towards a player behind the second defender. The attacking player then scores!",
+        "options": [
+            "Offside Call",
+            "No Offside Call"
+        ],
+        "answer": "2",
+        "image_path": "/static/data/learning/Question6.png"
+    },
+    {
+        "question_id": 7,
         "question_type": "match_terms",
         "question_text": "Slide the terms to their correct positions for each statement.",
         "terms": [

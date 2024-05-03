@@ -226,3 +226,10 @@ p {
 .feedback.incorrect {
     color: red;
 }
+.quiz-image {
+    width: 300px;
+    height: auto;
+    display: block;
+    margin-left: 0;
+}
+
