@@ -13,7 +13,7 @@ html, body {
 
 /*  using this as background*/
 .general{
-    background-color: #fff0db;
+    background-color: #fff0db !important;
 }
 
 .footer-colors {
@@ -71,10 +71,34 @@ html, body {
 }
 h1, h2 {
     color: #373737; /* Dark gray for better visibility and contrast */
+    margin: 0px;
+    font-size: 2rem; /* Slightly smaller than h1 */
+}
+h1 a, h2 a {
+    color: inherit; /* Inherits the color from the parent h1 or h2 */
+    text-decoration: none; /* Removes underline from links */
+    font-weight: inherit; /* Inherits font weight from parent */
+    display: inline; /* Keeps link inline */
+}
+h1 a:hover, h2 a:hover {
+    color: inherit; /* Inherits the color from the parent h1 or h2 */
+    text-decoration: underline; /* Adds underline on hover for better user interaction */
 }
 p {
     color: #a8a8a8; /* Lighter text color for paragraphs */
     line-height: 1.6; /* Improved line spacing for readability */
+    margin-bottom: 0px;
+}
+
+.sub-container {
+    background-color: #fff0db; /* Light beige background for the content area */
+    padding: 20px;
+    border-radius: 20px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-right: 40px;
 }
 
 .header-container {
@@ -90,23 +114,30 @@ p {
     white-space: nowrap; /* Prevents breaking into a new line */
 }
 
-.sub-container {
-    background-color: #fff0db; /* Light beige background for the content area */
-    padding: 20px;
-    border-radius: 15px; /* Rounded corners for the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-/* Styling for interactive buttons */
 .btn-primary {
     color: #a8a8a8;
     background-color: #006417; /* Custom green color to match the brand theme */
     border: none; /* No border for a cleaner look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
 }
 .btn-primary:hover,
 .btn-primary:focus {
     background-color: #006417 !important; /* Custom green color to match the brand theme */
     color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+.btn-back {
+    color: #a8a8a8;
+    background-color: #640000; /* Dark red background */
+    border: none; /* No border for a cleaner look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+.btn-back:hover,
+.btn-back:focus {
+    background-color: #640000 !important; /* Ensures background color stays consistent on hover and focus */
+    color: white; /* Changes text color to white for better visibility */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
 }
 
 .image-container {
@@ -121,8 +152,13 @@ p {
     object-fit: cover; /* Covers the area, may crop the image */
 }
 
+.soccer-border {
+    border-top: 3px solid red;
+    border-bottom: 3px solid red;
+}
+
 .h5 {
-    color: #373737; /* Green color, consider using a rich shade that stands out */
+    color: #373737; /* Grey color, consider using a rich shade that stands out */
     letter-spacing: 0.01em; /* Adding some spacing between letters for emphasis */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
 }
@@ -134,17 +170,31 @@ p {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
 }
 
+.bold-text {
+    font-weight: bold; /* Corrected property for bolding text */
+    letter-spacing: 0.01em; /* Adding some spacing between letters for emphasis */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
+}
+
 .nav-tabs .nav-link {
-    background-color: #373737; /* Custom green color */
+    background-color: #373737;
+    color: #a8a8a8;
+    border-color: #373737;
 }
 
 .nav-tabs .nav-link.active {
-    background-color: #006417; /* Custom green color */
-    color: #a8a8a8;
-    border-color: #004711 #004711 #fff; /* Green borders on the sides and bottom, white on the bottom to blend with the tab content area */
+    background-color: #a8a8a8;
+    color: #373737;
+    border-color: #a8a8a8;
 }
 .nav-tabs .nav-link:hover,
 .nav-tabs .nav-link:focus {
     color: white !important;
     border: 0px;
+}
+
+.tab-content {
+    border: 2px solid #a8a8a8;
+    padding: 10px;
+    margin-top: 0px;
 }
