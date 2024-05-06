@@ -76,47 +76,7 @@ quiz_questions = [
         ],
         "answer": "2",
         "image_path": "/static/data/learning/Question6.png"
-    },
-    {
-        "question_id": 7,
-        "question_type": "match_terms",
-        "question_text": "Slide the terms to their correct positions for each statement.",
-        "terms": [
-            "offside position",
-            "interfering with play",
-            "gaining an advantage",
-            "interfering with an opponent",
-            "second-last opponent",
-            "halfway line",
-            "offside offence",
-            "restart of play",
-            "passive offside",
-            "active involvement"
-        ],
-        "statements": [
-            {
-                "text": "A player is in an 1.)_ when they are nearer to the opponent's goal line than both the ball and the 2.)_, except when they are in their own half of the field, defined by the 3.)_.",
-                "blanks": [
-                    "offside Position",
-                    "second-last opponent",
-                    "halfway line"
-                ]
-            },
-            {
-                "text": "Being in an offside position is not an offence unless the player becomes involved in active play by 4.)_ or 5.)_ by playing or touching the ball passed or touched by a teammate.",
-                "blanks": [
-                    "interfering with play",
-                    "interfering with an opponent"
-                ]
-            },
-            {
-                "text": "A player is considered to be 6.)_ if they are in an offside position and receive the ball from an opponent who deliberately plays the ball (except from a deliberate save), thereby potentially 7.)_ from their position.",
-                "blanks": [
-                    "passive offside",
-                    "gaining an advantage"
-                ]
-            }
-        ]
+    
     }
 ]
 
