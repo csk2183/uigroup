@@ -325,7 +325,6 @@ p {
     vertical-align: top; /* Aligns better with inline content */
 }
 
-
 .results-list {
     max-height: 400px;  /* Limit the height of the container */
     overflow-y: auto;   /* Enable vertical scrolling */
@@ -333,4 +332,18 @@ p {
     border: 1px solid #ccc; /* Light grey border for the container */
     padding: 10px;
     border-radius: 8px; /* Rounded corners */
+}
+
+.progress {
+    background-color: #a8a8a8;  /* Light grey background for the whole progress bar */
+    border-radius: 10px;        /* Rounded corners for the progress bar */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);  /* Subtle inner shadow for depth */
+    overflow: hidden;           /* Ensures nothing spills over the rounded corners */
+}
+
+.progress-bar {
+    background-image: linear-gradient(45deg, #006417, #006417);  /* Green gradient effect */
+    transition: width 0.6s ease;  /* Smooth transition for width changes */
+    color: white;                  /* White text color for better readability */
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);  /* Outer shadow for a lifted effect */
 }
