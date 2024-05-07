@@ -142,9 +142,5 @@ def quiz_results():
     total = len(quiz_questions)
     return render_template('results.html', score=correct_answers, total=total, results=results)
 
-
-
-
-
 if __name__ == '__main__':
     app.run(debug=True)

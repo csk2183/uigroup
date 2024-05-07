@@ -209,11 +209,11 @@ p {
     margin-top: 0px;
 }
 
-.correct-answer {
+.form-check.correct-answer .form-check-label {
     color: #006417;
 }
 
-.incorrect-answer {
+.form-check.incorrect-answer .form-check-label {
     color: red;
 }
 

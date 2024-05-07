@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             feedbackMessage.classList.add('incorrect');
             return; // Exit if no answer is selected
         }
-
+    
         const correctAnswer = userAnswer.dataset.correct; // Correct answer is stored in data-correct attribute
         document.querySelectorAll('.form-check-input').forEach(input => {
             const parent = input.parentElement;
@@ -67,27 +67,44 @@ document.addEventListener('DOMContentLoaded', function() {
                 parent.classList.remove('correct-answer');
             }
         });
-
+    
+        // Disable the submit button after the form is submitted
+        document.querySelector('button[type="submit"]').disabled = true;
+    
         updateFeedback(userAnswer.value === correctAnswer);
     }
 
-    function handleMatchTermsSubmission() {
-        let allCorrect = true;
-        const statements = document.querySelectorAll('.statement');
-        statements.forEach((statement, index) => {
-            const blanks = statement.querySelectorAll('.term-slot');
-            const correctAnswers = quizQuestions[questionId - 1].statements[index].blanks; // Assuming quizQuestions is accessible
-
-            blanks.forEach((blank, i) => {
-                if (blank.textContent.trim() !== correctAnswers[i]) {
-                    allCorrect = false; // Check if the term in each blank is correct
-                }
-            });
-        });
-
-        updateFeedback(allCorrect);
-    }
+    function handleMultipleChoiceSubmission() {
+        const userAnswer = document.querySelector('input[name="user_answer"]:checked');
+        if (!userAnswer) {
+            feedbackMessage.textContent = "Please select an option.";
+            feedbackMessage.classList.add('incorrect');
+            return; // Exit if no answer is selected
+        }
     
+        const correctAnswer = userAnswer.dataset.correct; // Correct answer is stored in data-correct attribute
+        document.querySelectorAll('.form-check-input').forEach(input => {
+            const parent = input.parentElement;
+            if (input.value === correctAnswer) {
+                parent.classList.add('correct-answer'); // Highlight correct answer in green
+            } else {
+                parent.classList.remove('correct-answer');
+            }
+        
+            if (input.value === userAnswer.value && input.value !== correctAnswer) {
+                parent.classList.add('incorrect-answer'); // Highlight incorrect answer in red
+            } else {
+                parent.classList.remove('incorrect-answer');
+            }
+        
+            input.disabled = true; // Disable the radio button to prevent further changes
+        });        
+    
+        // Disable the submit button after the form is submitted
+        document.querySelector('button[type="submit"]').disabled = true;
+    
+        updateFeedback(userAnswer.value === correctAnswer);
+    }
 
     function updateFeedback(isCorrect) {
         if (isCorrect) {
@@ -106,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error);
             });
         } else {
-            feedbackMessage.textContent = "Incorrect. Try again!";
+            feedbackMessage.textContent = "Incorrect!";
             feedbackMessage.classList.add('incorrect');
             feedbackMessage.classList.remove('correct');
         }
