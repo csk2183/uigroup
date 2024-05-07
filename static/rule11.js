@@ -112,13 +112,20 @@ document.addEventListener('DOMContentLoaded', function() {
             feedbackMessage.classList.remove('incorrect');
             feedbackMessage.classList.add('correct');
 
-            // Increment correct answer count
+            // Edit correct answer count
             fetch('/quiz/add_correct', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ increment: 1 })
+                body: JSON.stringify({ question_number: 1 })
+            }).then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+            }).then(data => {
+                console.log('Success:', data);
             }).catch(error => {
                 console.error('Error:', error);
             });

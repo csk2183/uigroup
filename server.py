@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from datetime import datetime
 
-
 app = Flask(__name__)
+app.secret_key = 'rule11key'
 
 quiz_questions = [
     {
@@ -79,7 +79,7 @@ quiz_questions = [
     }
 ]
 
-correct_answers = 0
+correct_answers = [0] * len(quiz_questions)
 
 # Home page with a Start button
 @app.route('/')
@@ -113,7 +113,7 @@ def quiz_intro():
 def quiz(question_id):
     global correct_answers
     if question_id == 1:
-        correct_answers = 0
+        correct_answers = [0] * len(quiz_questions)
 
     if question_id > len(quiz_questions):
         return redirect(url_for('quiz_results'))
@@ -124,9 +124,16 @@ def quiz(question_id):
 @app.route('/quiz/add_correct', methods=['POST'])
 def quiz_add_correct():
     global correct_answers
-    correct_answers += 1
-    return 'Correct answer added successfully.', 200
-
+    data = request.get_json()
+    question_number = data.get('question_number')
+    index = question_number - 1
+    correct_answers[question_number] = 1
+    if 0 <= index < len(correct_answers):
+        correct_answers[index] = 1
+        return 'Correct answer added successfully.', 200
+    else:
+        return 'Error: Question number out of range.', 400
+    
 @app.route('/quiz/results')
 def quiz_results():
     results = []
@@ -140,9 +147,7 @@ def quiz_results():
             'correct': correct
         })
 
-    score = sum(1 for result in results if result['correct'])
-    total = len(quiz_questions)
-    return render_template('results.html', score=correct_answers, total=total, results=results)
+    return render_template('results.html', score=sum(correct_answers), total=len(quiz_questions), results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)
