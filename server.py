@@ -4,8 +4,6 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-user_answers = {}
-
 quiz_questions = [
     {
         "question_id": 1,
@@ -113,6 +111,10 @@ def quiz_intro():
 
 @app.route('/quiz/<int:question_id>')
 def quiz(question_id):
+    global correct_answers
+    if question_id == 1:
+        correct_answers = 0
+
     if question_id > len(quiz_questions):
         return redirect(url_for('quiz_results'))
 
