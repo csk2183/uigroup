@@ -4,7 +4,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# Temporary quiz questions data structure
+user_answers = {}
+
 quiz_questions = [
     {
         "question_id": 1,
@@ -126,7 +127,23 @@ def quiz_add_correct():
 
 @app.route('/quiz/results')
 def quiz_results():
-    return render_template('results.html', score=correct_answers, total=len(quiz_questions))
+    results = []
+    for question in quiz_questions:
+        user_answer = request.args.get(f'answer_{question["question_id"]}', 'No answer')
+        correct = user_answer == question['answer']
+        results.append({
+            'question_text': question['question_text'],
+            'user_answer': user_answer,
+            'correct_answer': question['options'][int(question['answer']) - 1],
+            'correct': correct
+        })
+
+    score = sum(1 for result in results if result['correct'])
+    total = len(quiz_questions)
+    return render_template('results.html', score=correct_answers, total=total, results=results)
+
+
+
 
 
 if __name__ == '__main__':

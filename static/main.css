@@ -324,3 +324,13 @@ p {
     background-color: #f9f9f9;
     vertical-align: top; /* Aligns better with inline content */
 }
+
+
+.results-list {
+    max-height: 400px;  /* Limit the height of the container */
+    overflow-y: auto;   /* Enable vertical scrolling */
+    background-color: #f8f9fa; /* Light background color */
+    border: 1px solid #ccc; /* Light grey border for the container */
+    padding: 10px;
+    border-radius: 8px; /* Rounded corners */
+}

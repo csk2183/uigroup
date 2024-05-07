@@ -18,7 +18,7 @@
                 <input class="form-check-input" type="radio" name="user_answer" id="option{{ loop.index }}"
                     value="{{ loop.index }}" required data-correct="{{ question.answer }}">
                 <label class="form-check-label" for="option{{ loop.index }}">{{ option }}</label>
-            </div>         
+            </div>
             {% endfor %}
             <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
@@ -33,7 +33,7 @@
             <div class="drag-and-drop">
                 <div class="statements">
                     {% for statement in question.statements %}
-                    
+
                     <div class="statement">
                         <p>Question {{ question_id + loop.index0 }}:
                             {% set parts = statement.text.split('_') %}
@@ -45,7 +45,7 @@
                             {% endfor %}
                         </p>
                     </div>
-                    
+
                     {% endfor %}
                 </div>
                 <div class="terms">
@@ -69,6 +69,6 @@
         <button id="nextQuestionButton" class="btn btn-primary mt-3" style="display: none;" onclick="location.href='{{ url_for('quiz', question_id=question_id+1) }}'">Next Question</button>
     </div>
     {% endif %}
-    
+
 </div>
 {% endblock %}
