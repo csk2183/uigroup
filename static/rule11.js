@@ -1,40 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const draggables = document.querySelectorAll('.term');
-    const containers = document.querySelectorAll('.term-slot');
     const nextQuestionButton = document.getElementById('nextQuestionButton');
     const feedbackMessage = document.getElementById('feedbackMessage');
-
-    draggables.forEach(draggable => {
-        draggable.addEventListener('dragstart', () => {
-            draggable.classList.add('dragging');
-        });
-
-        draggable.addEventListener('dragend', () => {
-            draggable.classList.remove('dragging');
-        });
-    });
-
-    containers.forEach(container => {
-        container.addEventListener('dragover', e => {
-            e.preventDefault(); // Allow the drop by preventing the default handling of the element
-            container.classList.add('hovered'); // Visual cue for drop target
-        });
-
-        container.addEventListener('dragleave', () => {
-            container.classList.remove('hovered'); // Remove visual cue when draggable leaves
-        });
-
-        container.addEventListener('drop', e => {
-            e.preventDefault();
-            const draggable = document.querySelector('.dragging');
-            if (container.children.length === 0) { // Check if the drop container is empty
-                container.appendChild(draggable);
-            } else {
-                container.replaceChildren(draggable); // Replace existing content with the new draggable
-            }
-            container.classList.remove('hovered'); // Clean up visual cue
-        });
-    });
 
     var quizForm = document.getElementById('quizForm');
     if (quizForm) {

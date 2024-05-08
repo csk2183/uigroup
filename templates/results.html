@@ -8,16 +8,16 @@
     <h5 class="mt-3 mb-4">You scored {{ score }} out of {{ total }}!</h5>
 
     <div class="progress mb-4">
-        <div class="progress-bar" role="progressbar" style="width: {{ (score / total * 100) | round(2) }}%;" aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="{{ total }}">{{ (score / total * 100) | round(2) }}%</div>
+        <div class="progress-bar" role="progressbar" style="width: {{ (score / total * 100) | round(2) }}%;" aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="{{ total }}">{{ (score / total * 100) | round | int }}%</div>
     </div>
 
-    <div class="results-list" style="max-height: 400px; overflow-y: auto;">
+    <div class="results-list">
         <ul class="list-group">
             {% for result in results %}
             <li class="list-group-item {{ 'list-group-item-success' if result.correct else 'list-group-item-danger' }}">
-                Q{{ loop.index }}: {{ result.question_text }}<br>
-                Your answer: {{ result.user_answer }}<br>
-                Correct answer: {{ result.correct_answer }}
+                <h2 class="mb-1">Q{{ loop.index }}: {{ result.question_text }}</h2>
+                <p>Your answer: {{ result.user_answer }}</p>
+                <p>Correct answer: {{ result.correct_answer }}</p>
             </li>
             {% endfor %}
         </ul>
