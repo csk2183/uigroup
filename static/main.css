@@ -8,7 +8,7 @@ html, body {
     padding: 0;
     display: flex;
     flex-direction: column; /* Makes the main axis vertical */
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif
 }
 
 /*  using this as background*/
@@ -355,6 +355,6 @@ p {
     color: white;
 }
 
-p{
-    color:rgb(96, 96, 96);
+.content-wrap {
+    min-height: calc(100vh - 250px);
 }
