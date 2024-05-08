@@ -14,7 +14,8 @@ quiz_questions = [
             "Being nearer to the opponent's goal than both the ball and the second last opponent when the ball is played to them.",
             "Standing in the goalkeeper’s area."
         ],
-        "answer": "3"
+        "answer": "3",
+        "userAnswer": "0"
     },
     {
         "question_id": 2,
@@ -25,7 +26,8 @@ quiz_questions = [
             "When the player is passively standing on the field.", 
             "Only during a corner kick."
         ],
-        "answer": "2"
+        "answer": "2",
+        "userAnswer": "0"
     },
     {
         "question_id": 3,
@@ -36,7 +38,8 @@ quiz_questions = [
             "Receiving a throw in from while standing behind second-last defender.", 
             "All of the above."
         ],
-        "answer": "4"
+        "answer": "4",
+        "userAnswer": "0"
     },
     {
         "question_id": 4,
@@ -47,7 +50,8 @@ quiz_questions = [
             "The position of the player when the play starts.",
             "The referee’s discretion without any specific criteria."
         ],
-        "answer": "2"
+        "answer": "2",
+        "userAnswer": "0"
     },
     {
         "question_id": 5,
@@ -58,7 +62,8 @@ quiz_questions = [
             "In their own half of the field.",
             "In the goal area."
         ],
-        "answer": "3"
+        "answer": "3",
+        "userAnswer": "0"
     },
     {
         "question_id": 6,
@@ -68,12 +73,10 @@ quiz_questions = [
             "No Offside Call"
         ],
         "answer": "2",
+        "userAnswer": "0",
         "image_path": "/static/data/learning/Question6.png"
-    
     }
 ]
-
-correct_answers = [0] * len(quiz_questions)
 
 # Home page with a Start button
 @app.route('/')
@@ -101,8 +104,10 @@ def exceptions():
 
 @app.route('/quiz/intro')
 def quiz_intro():
-    global correct_answers
-    correct_answers = [0] * len(quiz_questions)
+    global quiz_questions
+    for question in quiz_questions:
+        question["userAnswer"] = "0"
+    print(quiz_questions)
     return render_template('quiz_intro.html')
 
 @app.route('/quiz/<int:question_id>')
@@ -114,16 +119,17 @@ def quiz(question_id):
     last_question = question_id==len(quiz_questions)
     return render_template('quiz.html', question=question, question_id=question_id, last_question=last_question)
 
-@app.route('/quiz/modify_correct', methods=['POST'])
-def quiz_modify_correct():
-    global correct_answers
+@app.route('/quiz/modify_user_answer', methods=['POST'])
+def quiz_modify_user_answers():
+    global quiz_questions
     data = request.get_json()
-    correct = data.get('modification') == 'correct'
+    answer = data.get('userAnswer')
     question_number = int(data.get('question_number'))
     index = question_number - 1
-    if 0 <= index < len(correct_answers):
-        correct_answers[index] = 1 if correct else 0
-        return 'Correct answer modified successfully.', 200
+    if 0 <= index < len(quiz_questions):
+        quiz_questions[index]["userAnswer"] = answer
+        print(quiz_questions)
+        return 'User answer modified successfully.', 200
     else:
         return 'Error: Question number out of range.', 400
     
@@ -131,16 +137,19 @@ def quiz_modify_correct():
 def quiz_results():
     results = []
     for question in quiz_questions:
-        user_answer = request.args.get(f'answer_{question["question_id"]}', 'No answer')
-        correct = user_answer == question['answer']
         results.append({
             'question_text': question['question_text'],
-            'user_answer': user_answer,
+            'user_answer': question['options'][int(question['userAnswer']) - 1],
             'correct_answer': question['options'][int(question['answer']) - 1],
-            'correct': correct
+            'correct': question['answer'] == question['userAnswer']
         })
 
-    return render_template('results.html', score=sum(correct_answers), total=len(quiz_questions), results=results)
+    score = 0
+    for question in quiz_questions:
+        if question["answer"] == question["userAnswer"]:
+            score += 1
+
+    return render_template('results.html', score=score, total=len(quiz_questions), results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -80,52 +80,35 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('button[type="submit"]').disabled = true;
     
         updateFeedback(userAnswer.value === correctAnswer);
+
+        const questionNumber = window.location.pathname.split('/').pop();
+        fetch('/quiz/modify_user_answer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ question_number: questionNumber, userAnswer: userAnswer.value })
+        }).then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        }).then(data => {
+            console.log('Success:', data);
+        }).catch(error => {
+            console.error('Error:', error);
+        });
     }
 
     function updateFeedback(isCorrect) {
-        const questionNumber = window.location.pathname.split('/').pop();
         if (isCorrect) {
             feedbackMessage.textContent = "Correct!";
             feedbackMessage.classList.remove('incorrect');
             feedbackMessage.classList.add('correct');
-
-            fetch('/quiz/modify_correct', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ question_number: questionNumber, modification: 'correct' })
-            }).then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error('Network response was not ok.');
-            }).then(data => {
-                console.log('Success:', data);
-            }).catch(error => {
-                console.error('Error:', error);
-            });
         } else {
             feedbackMessage.textContent = "Incorrect!";
             feedbackMessage.classList.add('incorrect');
             feedbackMessage.classList.remove('correct');
-
-            fetch('/quiz/modify_correct', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ question_number: questionNumber, modification: 'incorrect' })
-            }).then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error('Network response was not ok.');
-            }).then(data => {
-                console.log('Success:', data);
-            }).catch(error => {
-                console.error('Error:', error);
-            });
         }
 
         nextQuestionButton.style.display = 'block'; // Show the Next Question button
