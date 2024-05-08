@@ -15,7 +15,7 @@ quiz_questions = [
             "Standing in the goalkeeper’s area."
         ],
         "answer": "3",
-        "userAnswer": "0"
+        "userAnswer": None
     },
     {
         "question_id": 2,
@@ -27,7 +27,7 @@ quiz_questions = [
             "Only during a corner kick."
         ],
         "answer": "2",
-        "userAnswer": "0"
+        "userAnswer": None
     },
     {
         "question_id": 3,
@@ -39,7 +39,7 @@ quiz_questions = [
             "All of the above."
         ],
         "answer": "4",
-        "userAnswer": "0"
+        "userAnswer": None
     },
     {
         "question_id": 4,
@@ -51,7 +51,7 @@ quiz_questions = [
             "The referee’s discretion without any specific criteria."
         ],
         "answer": "2",
-        "userAnswer": "0"
+        "userAnswer": None
     },
     {
         "question_id": 5,
@@ -63,7 +63,7 @@ quiz_questions = [
             "In the goal area."
         ],
         "answer": "3",
-        "userAnswer": "0"
+        "userAnswer": None
     },
     {
         "question_id": 6,
@@ -73,7 +73,7 @@ quiz_questions = [
             "No Offside Call"
         ],
         "answer": "2",
-        "userAnswer": "0",
+        "userAnswer": None,
         "image_path": "/static/data/learning/Question6.png"
     }
 ]
@@ -106,8 +106,7 @@ def exceptions():
 def quiz_intro():
     global quiz_questions
     for question in quiz_questions:
-        question["userAnswer"] = "0"
-    print(quiz_questions)
+        question["userAnswer"] = None
     return render_template('quiz_intro.html')
 
 @app.route('/quiz/<int:question_id>')
@@ -128,7 +127,6 @@ def quiz_modify_user_answers():
     index = question_number - 1
     if 0 <= index < len(quiz_questions):
         quiz_questions[index]["userAnswer"] = answer
-        print(quiz_questions)
         return 'User answer modified successfully.', 200
     else:
         return 'Error: Question number out of range.', 400
@@ -137,17 +135,21 @@ def quiz_modify_user_answers():
 def quiz_results():
     results = []
     for question in quiz_questions:
-        results.append({
-            'question_text': question['question_text'],
-            'user_answer': question['options'][int(question['userAnswer']) - 1],
-            'correct_answer': question['options'][int(question['answer']) - 1],
-            'correct': question['answer'] == question['userAnswer']
-        })
+        if question['userAnswer'] != None:
+            results.append({
+                'question_text': question['question_text'],
+                'user_answer': question['options'][int(question['userAnswer']) - 1],
+                'correct_answer': question['options'][int(question['answer']) - 1],
+                'correct': question['answer'] == question['userAnswer']
+            })
 
     score = 0
     for question in quiz_questions:
         if question["answer"] == question["userAnswer"]:
             score += 1
+
+    if len(results) == 0:
+        return redirect(url_for('quiz_intro'))
 
     return render_template('results.html', score=score, total=len(quiz_questions), results=results)
 
