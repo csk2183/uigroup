@@ -118,6 +118,13 @@ p {
     white-space: nowrap; /* Prevents breaking into a new line */
 }
 
+.container-no-border {
+    background-color: #fff0db; /* Light beige background for the content area */
+    padding: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
 .btn-primary {
     color: #a8a8a8;
     background-color: #006417; /* Custom green color to match the brand theme */
@@ -174,6 +181,13 @@ p {
 
 .accent-text {
     color: #006417; /* Green color, consider using a rich shade that stands out */
+    font-weight: bold; /* Corrected property for bolding text */
+    letter-spacing: 0.01em; /* Adding some spacing between letters for emphasis */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
+}
+
+.dark-text {
+    color: #373737;
     font-weight: bold; /* Corrected property for bolding text */
     letter-spacing: 0.01em; /* Adding some spacing between letters for emphasis */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
