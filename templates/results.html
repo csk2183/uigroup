@@ -11,7 +11,6 @@
         <div class="progress-bar" role="progressbar" style="width: {{ (score / total * 100) | round(2) }}%;" aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="{{ total }}">{{ (score / total * 100) | round(2) }}%</div>
     </div>
 
-
     <div class="results-list" style="max-height: 400px; overflow-y: auto;">
         <ul class="list-group">
             {% for result in results %}
@@ -24,6 +23,13 @@
         </ul>
     </div>
 
-    <a href="{{ url_for('home') }}" class="btn btn-primary mt-3">Back to Home</a>
+    <div class="row justify-content-between">
+        <div class="col-auto mt-4">
+            <a href="/quiz/intro" class="btn btn-primary">Try Again</a>  <!-- Link to the quiz page -->
+        </div>
+        <div class="col-auto mt-4">
+            <a href="/" class="btn btn-back">Back to Home</a>  <!-- Link back to the home page -->
+        </div>
+    </div>
 </div>
 {% endblock %}

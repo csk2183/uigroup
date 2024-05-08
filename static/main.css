@@ -109,8 +109,7 @@ p {
 .header-container {
     display: flex; /* Enables Flexbox */
     align-items: center; /* Aligns items vertically in the center */
-    justify-content: center; /* Centers the items horizontally */
-    text-align: center; /* Ensures text within each header is centered */
+    text-align: center;
 }
 .header-container h1,
 .header-container h2 {

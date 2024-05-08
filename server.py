@@ -7,7 +7,6 @@ app.secret_key = 'rule11key'
 quiz_questions = [
     {
         "question_id": 1,
-        "question_type": "multiple_choice",
         "question_text": "What is considered offside position in soccer?",
         "options": [
             "Being in the opponent’s half of the field.",
@@ -19,7 +18,6 @@ quiz_questions = [
     },
     {
         "question_id": 2,
-        "question_type": "multiple_choice",
         "question_text": "When does being in an offside position lead to an offside rules offense?",
         "options": [
             "At any time during the game when the player is in the offside position.",
@@ -31,7 +29,6 @@ quiz_questions = [
     },
     {
         "question_id": 3,
-        "question_type": "multiple_choice",
         "question_text": "When is a player not considered offside?",
         "options": [
             "When receiving the ball directly from a goal kick.", 
@@ -43,7 +40,6 @@ quiz_questions = [
     },
     {
         "question_id": 4,
-        "question_type": "multiple_choice",
         "question_text": "What determines whether a player is offside when the ball is played to them?",
         "options": [
             "The position of the ball only.",
@@ -55,7 +51,6 @@ quiz_questions = [
     },
     {
         "question_id": 5,
-        "question_type": "multiple_choice",
         "question_text": "In which area of the field can a player never be offside?",
         "options": [
             "In the opponent's penalty area.",
@@ -67,7 +62,6 @@ quiz_questions = [
     },
     {
         "question_id": 6,
-        "question_type": "multiple_choice",
         "question_text": "The attacking goalie does a goal kick towards a player behind the second defender. The attacking player then scores!",
         "options": [
             "Offside Call",
@@ -107,30 +101,29 @@ def exceptions():
 
 @app.route('/quiz/intro')
 def quiz_intro():
+    global correct_answers
+    correct_answers = [0] * len(quiz_questions)
     return render_template('quiz_intro.html')
 
 @app.route('/quiz/<int:question_id>')
 def quiz(question_id):
-    global correct_answers
-    if question_id == 1:
-        correct_answers = [0] * len(quiz_questions)
-
     if question_id > len(quiz_questions):
         return redirect(url_for('quiz_results'))
 
     question = quiz_questions[question_id - 1]
-    return render_template('quiz.html', question=question, question_id=question_id)
+    last_question = question_id==len(quiz_questions)
+    return render_template('quiz.html', question=question, question_id=question_id, last_question=last_question)
 
-@app.route('/quiz/add_correct', methods=['POST'])
-def quiz_add_correct():
+@app.route('/quiz/modify_correct', methods=['POST'])
+def quiz_modify_correct():
     global correct_answers
     data = request.get_json()
-    question_number = data.get('question_number')
+    correct = data.get('modification') == 'correct'
+    question_number = int(data.get('question_number'))
     index = question_number - 1
-    correct_answers[question_number] = 1
     if 0 <= index < len(correct_answers):
-        correct_answers[index] = 1
-        return 'Correct answer added successfully.', 200
+        correct_answers[index] = 1 if correct else 0
+        return 'Correct answer modified successfully.', 200
     else:
         return 'Error: Question number out of range.', 400
     
