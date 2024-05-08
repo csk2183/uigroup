@@ -347,3 +347,15 @@ p {
     color: white;                  /* White text color for better readability */
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);  /* Outer shadow for a lifted effect */
 }
+
+.darker{
+    color:black;
+}
+
+.btn{
+    color: white;
+}
+
+p{
+    color:rgb(96, 96, 96);
+}
